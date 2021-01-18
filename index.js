@@ -7,6 +7,9 @@ app.use(express.json());
 app.use(cors());
 const PORT = process.env.PORT || 5000;
 const mail = require("./mail");
+app.get('/', (req, res) => {
+  res.send('Running')
+})
 app.post("/mail", async (req, res) => {
   const { subject, to, html, text } = req.body;
   const { success, error } = await mail({
